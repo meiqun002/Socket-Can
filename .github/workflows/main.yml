@@ -56,3 +56,17 @@ jobs:
       run: |
         echo "Shared object file generated at: ${{ github.workspace }}/build/libCanSocket.so"
         ls -la ${{ github.workspace }}/build/libCanSocket.so
+
+  test:
+    name: unit test
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up jdk 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'oracle'
+      - run: mvn verify
+
+    
