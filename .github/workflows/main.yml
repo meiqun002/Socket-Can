@@ -16,9 +16,6 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
 
-    - name: Set up the working directory
-      run: cd /home/runner/work/Socket-Can/Socket-Can
-
     - name: Install ARM64 cross-compiler
       run: |
         sudo apt-get update
@@ -36,7 +33,9 @@ jobs:
         ls -la /usr/lib/jvm/temurin-11-jdk-amd64/include
         ls -la /usr/lib/jvm/temurin-11-jdk-amd64/include/linux
 
-  
+    - name: Set up the working directory
+      run: cmake -S ${{ github.workspace }} -B ${{ github.workspace }}/build
+
     - name: Configure CMake
       run: cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 
