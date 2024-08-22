@@ -46,6 +46,11 @@ jobs:
            -DJAVA_INCLUDE_PATH2=$JAVA_HOME/include/linux \
            -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 
+    - name: Generate JNI headers
+      run: |
+        mkdir -p jni
+        javac -h jni/ src/com/slenergy/can/CanSocket.java
+
     - name: Build JNI project for ARM64
       run: cmake --build ${{ github.workspace }}/build --verbose
 
