@@ -32,7 +32,10 @@ jobs:
       run: |
         ls -la /usr/lib/jvm/temurin-11-jdk-amd64/include
         ls -la /usr/lib/jvm/temurin-11-jdk-amd64/include/linux
-      
+
+  
+    - name: Configure CMake
+      run: cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 
     - name: Build JNI project for ARM64
       run: |
