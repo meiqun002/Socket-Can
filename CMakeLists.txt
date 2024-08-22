@@ -33,3 +33,9 @@ endif()
 
 # 添加源文件并生成共享库
 add_library(CanSocket SHARED jni/cansocket.cpp)
+
+# 添加包含目录，将项目根目录添加到头文件搜索路径
+target_include_directories(CanSocket PUBLIC ${PROJECT_SOURCE_DIR})
+
+# 如果有其他头文件目录，比如 include/，也可以包含进来
+target_include_directories(CanSocket PUBLIC ${PROJECT_SOURCE_DIR}/include)
