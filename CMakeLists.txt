@@ -32,4 +32,4 @@ endif()
 # add_executable(main JNIDemo.cpp)
 
 # 添加源文件并生成共享库
-add_library(JNIDemo SHARED JNIDemo.cpp)
+add_library(CanSocket SHARED jni/cansocket.cpp)
