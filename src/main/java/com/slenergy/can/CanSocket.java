@@ -43,7 +43,7 @@ public final class CanSocket implements Closeable {
     private static void loadLibFromJar(final String libName)
             throws IOException {
         Objects.requireNonNull(libName);
-        final String fileName = "/lib" + libName + ".so";
+        final String fileName = "/lib/" + libName + ".so";
         final FileAttribute<Set<PosixFilePermission>> permissions =
                 PosixFilePermissions.asFileAttribute(
                         PosixFilePermissions.fromString("rw-------"));
