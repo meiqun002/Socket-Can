@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 project(helloWorld VERSION 1.0.0)
 
-# 查找 JNI 并设置 JNI 路径
-find_package(JNI REQUIRED)
-include_directories(${JNI_INCLUDE_DIRS})
 
 # 检测操作系统并设置相应的 JNI 路径和工具链
 if (WIN32)
@@ -23,10 +20,10 @@ elseif (UNIX)
     # set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 
     # 设置 JNI 头文件路径
-    # include_directories("/usr/lib/jvm/java-17-openjdk-arm64/include")
-    # include_directories("/usr/lib/jvm/java-17-openjdk-arm64/include/linux")
-    include_directories("/usr/lib/jvm/temurin-11-jdk-amd64/include")
-    include_directories("/usr/lib/jvm/temurin-11-jdk-amd64/include/linux")
+    include_directories("/usr/lib/jvm/java-17-openjdk-arm64/include")
+    include_directories("/usr/lib/jvm/java-17-openjdk-arm64/include/linux")
+    # include_directories("/usr/lib/jvm/temurin-11-jdk-amd64/include")
+    # include_directories("/usr/lib/jvm/temurin-11-jdk-amd64/include/linux")
 endif()
 
 # add_executable(main JNIDemo.cpp)
