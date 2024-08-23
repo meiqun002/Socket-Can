@@ -20,14 +20,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu openjdk-17-jdk-headless
-        sudo mv /usr/lib/jvm/temurin-11-jdk-amd64 /usr/lib/jvm/java-17-openjdk-arm64 
 
     - name: Find OpenJDK Path
       id: jdk-path
       run: |
-        JAVA_HOME=$(sudo update-alternatives --query java | grep 'Value: ' | cut -d' ' -f2 | sed 's/\/bin\/java//')
-        echo "JAVA_HOME=$JAVA_HOME" >> $GITHUB_ENV
-        echo "Found JAVA_HOME at $JAVA_HOME"
+        JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
+#        JAVA_HOME=$(sudo update-alternatives --query java | grep 'Value: ' | cut -d' ' -f2 | sed 's/\/bin\/java//')
+#        echo "JAVA_HOME=$JAVA_HOME" >> $GITHUB_ENV
+#        echo "Found JAVA_HOME at $JAVA_HOME"
 
     - name: Verify JDK installation
       run: |
