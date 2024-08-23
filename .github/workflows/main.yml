@@ -16,10 +16,11 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
 
-    - name: Install ARM64 cross-compiler
+    - name: Install ARM64 cross-compiler # 将 JDK 移动到期望的位置
       run: |
         sudo apt-get update
         sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu openjdk-17-jdk-headless
+        sudo mv /usr/lib/jvm/java-17-openjdk-amd64 /usr/lib/jvm/java-17-openjdk-arm64 
 
     - name: Find OpenJDK Path
       id: jdk-path
