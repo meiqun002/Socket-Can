@@ -144,7 +144,7 @@ JNIEXPORT jstring JNICALL Java_com_slenergy_can_CanSocket__1discoverInterfaceNam
 }
 
 
-JNIEXPORT void JNICALL Java_com_slenergy_can_CanSockeAt__1bindToSocket
+JNIEXPORT void JNICALL Java_com_slenergy_can_CanSocket__1bindToSocket
 (JNIEnv *env, jclass obj, jint fd, jint ifIndex)
 {
 	struct sockaddr_can addr;
