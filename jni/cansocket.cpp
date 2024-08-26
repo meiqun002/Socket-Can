@@ -144,7 +144,7 @@ JNIEXPORT jstring JNICALL Java_com_slenergy_can_CanSocket__1discoverInterfaceNam
 }
 
 
-JNIEXPORT void JNICALL Java_com_slenergy_can_CanSocket__1bindToSocket
+JNIEXPORT void JNICALL Java_com_slenergy_can_CanSockeAt__1bindToSocket
 (JNIEnv *env, jclass obj, jint fd, jint ifIndex)
 {
 	struct sockaddr_can addr;
@@ -199,10 +199,17 @@ JNIEXPORT jobject JNICALL Java_com_slenergy_can_CanSocket__1recvFrame
 	memset(&frame, 0, sizeof(frame));
 	nbytes = recvfrom(fd, &frame, sizeof(frame), flags,
 			  reinterpret_cast<struct sockaddr *>(&addr), &len);
+	// if (len != sizeof(addr)) {
+	// 	throwIllegalArgumentException(env, "illegal AF_CAN address");
+	// 	return NULL;
+	// }
 	if (len != sizeof(addr)) {
-		throwIllegalArgumentException(env, "illegal AF_CAN address");
-		return NULL;
-	}
+        char error_message[100];
+        sprintf(error_message, "Illegal AF_CAN address: Received len: %d, expected len: %d", len, sizeof(addr));
+        (*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalArgumentException"), error_message);
+        return NULL;
+    }
+
 	if (nbytes == -1) {
 		throwIOExceptionErrno(env, errno);
 		return NULL;

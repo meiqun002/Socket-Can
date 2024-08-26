@@ -133,7 +133,7 @@ public class CanSocketTest {
         }
     }
 
-    //    @Test
+    @Test
     public void testRecv() throws IOException {
         try (final CanSocket socket = new CanSocket(Mode.RAW)) {
             socket.bind(CanSocket.CAN_ALL_INTERFACES);
