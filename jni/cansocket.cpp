@@ -199,11 +199,11 @@ JNIEXPORT jobject JNICALL Java_com_slenergy_can_CanSocket__1recvFrame
 	memset(&frame, 0, sizeof(frame));
 	nbytes = recvfrom(fd, &frame, sizeof(frame), flags,
 			  reinterpret_cast<struct sockaddr *>(&addr), &len);
-	 if (len != sizeof(addr)) {
-		printf("Expected size: %zu, but got: %zu\n", sizeof(addr), len);
-	 	throwIllegalArgumentException(env, "illegal AF_CAN address");
-	 	return NULL;
-	 }
+//	 if (len != sizeof(addr)) {
+//		printf("Expected size: %zu, but got: %zu\n", sizeof(addr), len);
+//	 	throwIllegalArgumentException(env, "illegal AF_CAN address");
+//	 	return NULL;
+//	 }
 	if (nbytes == -1) {
 		throwIOExceptionErrno(env, errno);
 		return NULL;
